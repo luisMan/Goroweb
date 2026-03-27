@@ -2,11 +2,12 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <h3>BirdFuel</h3>
-        <p>Plant-based supplements for daily performance.</p>
+        <h3>{{ content.branding.brandName }}</h3>
+        <p>{{ content.branding.footerDescription }}</p>
       </div>
       <div>
         <h4>Shop</h4>
+        <RouterLink to="/products">Products</RouterLink>
         <RouterLink to="/collections/all">All Products</RouterLink>
         <RouterLink to="/collections/protein">Protein</RouterLink>
         <RouterLink to="/collections/performance">Performance</RouterLink>
@@ -20,6 +21,7 @@
       <div>
         <h4>Content</h4>
         <RouterLink to="/blog">Blog</RouterLink>
+        <RouterLink to="/admin">Admin</RouterLink>
         <a href="#">Our Story</a>
         <a href="#">Contact</a>
       </div>
@@ -29,5 +31,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-</script>
+import { useStorefrontContent } from "../../services/storefrontContent";
 
+const { content } = useStorefrontContent();
+</script>

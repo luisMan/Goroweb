@@ -1,11 +1,27 @@
 <template>
-  <div class="parallax-bg-wrap" aria-hidden="true">
+  <div class="parallax-bg-wrap" :class="{ 'parallax-bg-wrap-home': isHomeRoute }" aria-hidden="true">
     <div class="parallax-image" :style="parallaxStyle"></div>
+    <video
+      v-if="isHomeRoute"
+      class="parallax-video"
+      :style="parallaxStyle"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=2100&q=80"
+    >
+      <source
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/e/eb/Half_rack_resistance_exercise_workout.webm/Half_rack_resistance_exercise_workout.webm.360p.webm?download="
+        type="video/webm"
+      />
+    </video>
     <div class="parallax-vignette"></div>
   </div>
   <div class="grain"></div>
   <div class="announcement-bar">
-    <p>Free shipping in Mexico from $999 MXN - 100% plant-based formulas</p>
+    <p>{{ content.branding.announcementText }}</p>
   </div>
   <SiteHeader />
   <main>
@@ -21,11 +37,15 @@ import { useRoute } from "vue-router";
 import SiteHeader from "./SiteHeader.vue";
 import SiteFooter from "./SiteFooter.vue";
 import CartDrawer from "./CartDrawer.vue";
+import { useStorefrontContent } from "../../services/storefrontContent";
 
 const route = useRoute();
+const { content } = useStorefrontContent();
 const parallaxOffset = ref(0);
 const parallaxCards = ref<HTMLElement[]>([]);
 let ticking = false;
+
+const isHomeRoute = computed(() => route.name === "home");
 
 const parallaxStyle = computed(() => ({
   transform: `translate3d(0, ${-parallaxOffset.value}px, 0) scale(1.16)`

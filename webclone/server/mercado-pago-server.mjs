@@ -1,6 +1,6 @@
-import { createServer } from "node:http";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID, timingSafeEqual } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { createServer } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,6 +23,16 @@ const explicitBackUrls = {
   pending: normalizeHttpUrl(process.env.MERCADO_PAGO_PENDING_URL ?? "")
 };
 
+const adminUsername = (process.env.ADMIN_USERNAME ?? "").trim();
+const adminPassword = process.env.ADMIN_PASSWORD ?? "";
+const adminSessionTtlMs = Number.parseInt(process.env.ADMIN_SESSION_TTL_MS ?? "43200000", 10);
+const adminMaxFailedAttempts = Number.parseInt(process.env.ADMIN_MAX_FAILED_ATTEMPTS ?? "3", 10);
+const adminLockoutMs = Number.parseInt(process.env.ADMIN_LOCKOUT_MS ?? "900000", 10);
+const adminCookieName = "birdfuel_admin_session";
+
+const adminSessions = new Map();
+const adminLoginAttempts = new Map();
+
 const server = createServer(async (request, response) => {
   const origin = normalizeHttpUrl(request.headers.origin ?? "") || frontendOrigin;
   setCorsHeaders(response, origin);
@@ -34,8 +44,7 @@ const server = createServer(async (request, response) => {
   }
 
   if (request.method === "GET" && request.url === "/health") {
-    response.writeHead(200, { "Content-Type": "application/json" });
-    response.end(JSON.stringify({ ok: true }));
+    writeJson(response, 200, { ok: true });
     return;
   }
 
@@ -44,12 +53,26 @@ const server = createServer(async (request, response) => {
     return;
   }
 
-  response.writeHead(404, { "Content-Type": "application/json" });
-  response.end(JSON.stringify({ error: "Not found." }));
+  if (request.method === "GET" && request.url === "/api/admin/session") {
+    handleAdminSession(request, response);
+    return;
+  }
+
+  if (request.method === "POST" && request.url === "/api/admin/login") {
+    await handleAdminLogin(request, response);
+    return;
+  }
+
+  if (request.method === "POST" && request.url === "/api/admin/logout") {
+    handleAdminLogout(request, response);
+    return;
+  }
+
+  writeJson(response, 404, { error: "Not found." });
 });
 
 server.listen(port, () => {
-  console.log(`Mercado Pago server listening on http://localhost:${port}`);
+  console.log(`Storefront server listening on http://localhost:${port}`);
 });
 
 async function handleCreatePreference(request, response, requestOrigin) {
@@ -129,12 +152,237 @@ async function handleCreatePreference(request, response, requestOrigin) {
   }
 }
 
+function handleAdminSession(request, response) {
+  if (!isAdminConfigured()) {
+    writeJson(response, 503, {
+      authenticated: false,
+      error: "Admin authentication is not configured. Set ADMIN_USERNAME and ADMIN_PASSWORD."
+    });
+    return;
+  }
+
+  const session = getAdminSessionRecord(request);
+  if (!session) {
+    clearAuthCookie(response);
+    writeJson(response, 401, { authenticated: false });
+    return;
+  }
+
+  writeJson(response, 200, {
+    authenticated: true,
+    username: session.username
+  });
+}
+
+async function handleAdminLogin(request, response) {
+  if (!isAdminConfigured()) {
+    writeJson(response, 503, {
+      authenticated: false,
+      error: "Admin authentication is not configured. Set ADMIN_USERNAME and ADMIN_PASSWORD."
+    });
+    return;
+  }
+
+  const clientId = getClientIdentifier(request);
+  const lockout = getActiveLockout(clientId);
+  if (lockout) {
+    writeJson(response, 429, {
+      authenticated: false,
+      error: `Too many failed attempts. Try again in ${formatRetryAfter(lockout.retryAfterMs)}.`,
+      retryAfterMs: lockout.retryAfterMs
+    });
+    return;
+  }
+
+  try {
+    const body = await readJsonBody(request);
+    const username = String(body?.username ?? "").trim();
+    const password = String(body?.password ?? "");
+
+    if (safeCompare(username, adminUsername) && safeCompare(password, adminPassword)) {
+      adminLoginAttempts.delete(clientId);
+
+      const sessionId = randomUUID();
+      adminSessions.set(sessionId, {
+        username: adminUsername,
+        expiresAt: Date.now() + adminSessionTtlMs
+      });
+
+      setAuthCookie(response, sessionId);
+      writeJson(response, 200, {
+        authenticated: true,
+        username: adminUsername
+      });
+      return;
+    }
+
+    const retryAfterMs = registerFailedAttempt(clientId);
+    if (retryAfterMs > 0) {
+      writeJson(response, 429, {
+        authenticated: false,
+        error: `Too many failed attempts. Try again in ${formatRetryAfter(retryAfterMs)}.`,
+        retryAfterMs
+      });
+      return;
+    }
+
+    writeJson(response, 401, {
+      authenticated: false,
+      error: `Invalid admin credentials. ${Math.max(adminMaxFailedAttempts - getAttemptFailures(clientId), 0)} attempts remaining.`
+    });
+  } catch (error) {
+    writeJson(response, 400, {
+      authenticated: false,
+      error: error instanceof Error ? error.message : "Invalid login payload."
+    });
+  }
+}
+
+function handleAdminLogout(request, response) {
+  const sessionId = getCookieValue(request.headers.cookie ?? "", adminCookieName);
+  if (sessionId) {
+    adminSessions.delete(sessionId);
+  }
+
+  clearAuthCookie(response);
+  writeJson(response, 200, { authenticated: false });
+}
+
 function buildBackUrls(baseReturnUrl) {
   return {
     success: explicitBackUrls.approved || `${baseReturnUrl}/cart?checkout_status=approved`,
     failure: explicitBackUrls.failure || `${baseReturnUrl}/cart?checkout_status=failure`,
     pending: explicitBackUrls.pending || `${baseReturnUrl}/cart?checkout_status=pending`
   };
+}
+
+function isAdminConfigured() {
+  return Boolean(adminUsername && adminPassword);
+}
+
+function getAdminSessionRecord(request) {
+  pruneExpiredSessions();
+  const sessionId = getCookieValue(request.headers.cookie ?? "", adminCookieName);
+  if (!sessionId) return null;
+
+  const session = adminSessions.get(sessionId);
+  if (!session) return null;
+  if (session.expiresAt <= Date.now()) {
+    adminSessions.delete(sessionId);
+    return null;
+  }
+
+  return session;
+}
+
+function pruneExpiredSessions() {
+  const now = Date.now();
+  adminSessions.forEach((session, sessionId) => {
+    if (session.expiresAt <= now) {
+      adminSessions.delete(sessionId);
+    }
+  });
+}
+
+function setAuthCookie(response, sessionId) {
+  const cookie = [
+    `${adminCookieName}=${encodeURIComponent(sessionId)}`,
+    "Path=/",
+    "HttpOnly",
+    "SameSite=Lax",
+    `Max-Age=${Math.max(Math.floor(adminSessionTtlMs / 1000), 1)}`
+  ];
+
+  if (frontendOrigin.startsWith("https://")) {
+    cookie.push("Secure");
+  }
+
+  response.setHeader("Set-Cookie", cookie.join("; "));
+}
+
+function clearAuthCookie(response) {
+  response.setHeader(
+    "Set-Cookie",
+    `${adminCookieName}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+  );
+}
+
+function getActiveLockout(clientId) {
+  const attempt = adminLoginAttempts.get(clientId);
+  if (!attempt) return null;
+  if (!attempt.lockedUntil || attempt.lockedUntil <= Date.now()) {
+    if (attempt.lockedUntil) {
+      adminLoginAttempts.delete(clientId);
+    }
+    return null;
+  }
+
+  return {
+    retryAfterMs: attempt.lockedUntil - Date.now()
+  };
+}
+
+function registerFailedAttempt(clientId) {
+  const attempt = adminLoginAttempts.get(clientId) ?? {
+    failures: 0,
+    lockedUntil: 0
+  };
+
+  attempt.failures += 1;
+
+  if (attempt.failures >= adminMaxFailedAttempts) {
+    attempt.failures = 0;
+    attempt.lockedUntil = Date.now() + adminLockoutMs;
+  }
+
+  adminLoginAttempts.set(clientId, attempt);
+
+  if (attempt.lockedUntil > Date.now()) {
+    return attempt.lockedUntil - Date.now();
+  }
+
+  return 0;
+}
+
+function getAttemptFailures(clientId) {
+  return adminLoginAttempts.get(clientId)?.failures ?? 0;
+}
+
+function getClientIdentifier(request) {
+  const forwardedFor = String(request.headers["x-forwarded-for"] ?? "").split(",")[0].trim();
+  return forwardedFor || request.socket.remoteAddress || "unknown";
+}
+
+function getCookieValue(cookieHeader, key) {
+  const rawValue = cookieHeader
+    .split(";")
+    .map((entry) => entry.trim())
+    .find((entry) => entry.startsWith(`${key}=`))
+    ?.slice(key.length + 1);
+
+  return rawValue ? decodeURIComponent(rawValue) : "";
+}
+
+function safeCompare(left, right) {
+  const leftDigest = createHash("sha256").update(String(left)).digest();
+  const rightDigest = createHash("sha256").update(String(right)).digest();
+  return timingSafeEqual(leftDigest, rightDigest);
+}
+
+function formatRetryAfter(retryAfterMs) {
+  const seconds = Math.max(Math.ceil(retryAfterMs / 1000), 1);
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  if (!minutes) {
+    return `${seconds}s`;
+  }
+
+  if (!remainingSeconds) {
+    return `${minutes}m`;
+  }
+
+  return `${minutes}m ${remainingSeconds}s`;
 }
 
 function normalizeItems(input) {
@@ -199,6 +447,7 @@ function setCorsHeaders(response, origin) {
     response.setHeader("Vary", "Origin");
   }
 
+  response.setHeader("Access-Control-Allow-Credentials", "true");
   response.setHeader("Access-Control-Allow-Headers", "Content-Type");
   response.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
 }

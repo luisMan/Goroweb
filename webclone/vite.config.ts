@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => {
     plugins: [vue()],
     server: {
       proxy: {
+        "/api/admin": {
+          target: env.MERCADO_PAGO_SERVER_URL || "http://localhost:8787",
+          changeOrigin: true
+        },
         "/api/mercado-pago": {
           target: env.MERCADO_PAGO_SERVER_URL || "http://localhost:8787",
           changeOrigin: true

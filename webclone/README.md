@@ -68,3 +68,18 @@ Notes:
 - Keep `MERCADO_PAGO_ACCESS_TOKEN` server-side only.
 - Vite proxies `/api/mercado-pago/*` to `MERCADO_PAGO_SERVER_URL` during local development.
 - By default, approved, failed, and pending returns come back to `/cart` with `checkout_status` in the query string.
+
+## Admin Authentication
+The `/admin` page is protected by server-side credentials and an HTTP-only session cookie.
+
+Set these values in `.env`:
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD`
+- `ADMIN_SESSION_TTL_MS`
+- `ADMIN_MAX_FAILED_ATTEMPTS`
+- `ADMIN_LOCKOUT_MS`
+
+Behavior:
+- login attempts are checked server-side, not in the frontend
+- after 3 failed login attempts from the same client, admin login is locked for the configured timeout window
+- successful login clears the failure counter for that client

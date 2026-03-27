@@ -9,6 +9,7 @@
     <div class="cart-body">
       <p v-if="state.lines.length === 0" class="empty">Your cart is empty.</p>
       <article class="cart-item" v-for="line in state.lines" :key="line.id">
+        <img class="cart-item-image" :src="line.image" :alt="line.title" />
         <div>
           <h4>{{ line.title }}</h4>
           <p>{{ formatCurrency(line.unitPriceCents, line.currencyCode) }}</p>

@@ -1,14 +1,13 @@
-import { mapCatalogProductToStorefront, type CatalogProductsResponse } from "../contracts/catalog";
+import { mapCatalogProductToStorefront } from "../contracts/catalog";
 import type { StorefrontProduct } from "../types/storefront";
-
-let catalogPromise: Promise<CatalogProductsResponse> | null = null;
+import { getCatalogProducts } from "./catalogStore";
 
 export async function getProducts(collectionHandle = "all"): Promise<StorefrontProduct[]> {
   const data = await getCatalogProducts();
   const filtered =
     collectionHandle === "all"
-      ? data.products
-      : data.products.filter(
+      ? data
+      : data.filter(
           (product) => (product.collection_handle ?? slugify(product.collection ?? "all")) === collectionHandle
         );
 
@@ -17,7 +16,7 @@ export async function getProducts(collectionHandle = "all"): Promise<StorefrontP
 
 export async function getProductByHandle(handle: string): Promise<StorefrontProduct> {
   const data = await getCatalogProducts();
-  const product = data.products.find((entry) => entry.handle === handle);
+  const product = data.find((entry) => entry.handle === handle);
   if (!product) {
     throw new Error(`Product ${handle} was not found in the local catalog.`);
   }
@@ -40,18 +39,4 @@ function slugify(value: string): string {
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
-}
-
-async function getCatalogProducts(): Promise<CatalogProductsResponse> {
-  if (!catalogPromise) {
-    catalogPromise = fetch("/api/products.json").then(async (response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} when requesting /api/products.json`);
-      }
-
-      return (await response.json()) as CatalogProductsResponse;
-    });
-  }
-
-  return await catalogPromise;
 }

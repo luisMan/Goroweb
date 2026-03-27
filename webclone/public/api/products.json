@@ -413,6 +413,282 @@
       "collection": "Performance",
       "badge": "Recovery",
       "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970461,
+      "title": "Electrolitos Zero Berry 300 g",
+      "handle": "electrolitos-zero-berry-300-g",
+      "description": "<p>Sugar-free hydration blend with sodium, potassium, magnesium, and a clean berry profile.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Hydration Series",
+      "tags": ["hydration", "electrolytes", "berry"],
+      "price": 38900,
+      "price_min": 38900,
+      "price_max": 38900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 42900,
+      "compare_at_price_min": 42900,
+      "compare_at_price_max": 42900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000007,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "ELECT-BER-300",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Electrolitos Zero Berry 300 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 38900,
+          "weight": 300,
+          "compare_at_price": 42900,
+          "inventory_management": null,
+          "barcode": "750000000007"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/electrolitos-zero-berry-300-g",
+      "media": [
+        {
+          "alt": "Electrolitos Zero Berry",
+          "id": 1001007,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Hydration",
+      "badge": "Zero Sugar",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970462,
+      "title": "Falcon Protein Chocolate 1.8 kg",
+      "handle": "falcon-protein-chocolate-1-8-kg-60-servicios",
+      "description": "<p>Rich cacao plant protein for post-workout recovery and high-protein daily intake.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Protein Series",
+      "tags": ["protein", "chocolate", "recovery"],
+      "price": 84900,
+      "price_min": 84900,
+      "price_max": 84900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 93900,
+      "compare_at_price_min": 93900,
+      "compare_at_price_max": 93900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000008,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "FALC-CHO-18",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Falcon Protein Chocolate 1.8 kg - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 84900,
+          "weight": 1800,
+          "compare_at_price": 93900,
+          "inventory_management": null,
+          "barcode": "750000000008"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1579722821273-0f6c2f5d6b85?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1579722821273-0f6c2f5d6b85?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/falcon-protein-chocolate-1-8-kg-60-servicios",
+      "media": [
+        {
+          "alt": "Falcon Protein Chocolate",
+          "id": 1001008,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1579722821273-0f6c2f5d6b85?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Protein",
+      "badge": "Best Seller",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970463,
+      "title": "Greens & Fiber Daily Blend 390 g",
+      "handle": "greens-fiber-daily-blend-390-g",
+      "description": "<p>Daily greens, digestive fiber, and herbs designed to support routine, satiety, and gut comfort.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Wellness Series",
+      "tags": ["greens", "fiber", "wellness"],
+      "price": 59900,
+      "price_min": 59900,
+      "price_max": 59900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 64900,
+      "compare_at_price_min": 64900,
+      "compare_at_price_max": 64900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000009,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "GREENS-390-01",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Greens & Fiber Daily Blend 390 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 59900,
+          "weight": 390,
+          "compare_at_price": 64900,
+          "inventory_management": null,
+          "barcode": "750000000009"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/greens-fiber-daily-blend-390-g",
+      "media": [
+        {
+          "alt": "Greens and Fiber",
+          "id": 1001009,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Wellness",
+      "badge": "Daily Routine",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970464,
+      "title": "Protein Bars Mixed Box 12 Pack",
+      "handle": "protein-bars-mixed-box-12-pack",
+      "description": "<p>Grab-and-go protein bars with mixed flavors for workdays, travel, and post-training snacks.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Snack Series",
+      "tags": ["protein bars", "snacks", "box"],
+      "price": 44900,
+      "price_min": 44900,
+      "price_max": 44900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 49900,
+      "compare_at_price_min": 49900,
+      "compare_at_price_max": 49900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000010,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "BAR-MIX-12",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Protein Bars Mixed Box 12 Pack - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 44900,
+          "weight": 720,
+          "compare_at_price": 49900,
+          "inventory_management": null,
+          "barcode": "750000000010"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/protein-bars-mixed-box-12-pack",
+      "media": [
+        {
+          "alt": "Protein Bars Mixed Box",
+          "id": 1001010,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Snacks",
+      "badge": "New",
+      "currency_code": "MXN"
     }
   ]
 }

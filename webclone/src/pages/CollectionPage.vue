@@ -2,9 +2,9 @@
   <section class="section-pad">
     <div class="container">
       <SectionHeader
-        eyebrow="Collection"
+        :eyebrow="content.collectionPage.eyebrow"
         :title="pageTitle"
-        subtitle="Filter products by line and quickly add items to cart."
+        :subtitle="content.collectionPage.subtitle"
       />
       <CollectionPills v-model="activeCollection" :options="collectionOptions" />
       <div class="product-grid">
@@ -16,7 +16,7 @@
         />
       </div>
       <p v-if="!loading && filteredProducts.length === 0" class="empty-state">
-        No products were found for this collection.
+        {{ content.collectionPage.emptyStateText }}
       </p>
     </div>
   </section>
@@ -29,6 +29,8 @@ import SectionHeader from "../components/common/SectionHeader.vue";
 import CollectionPills, { type CollectionOption } from "../components/catalog/CollectionPills.vue";
 import ProductCard from "../components/catalog/ProductCard.vue";
 import { getProducts } from "../services/productService";
+import { useCatalogStore } from "../services/catalogStore";
+import { useStorefrontContent } from "../services/storefrontContent";
 import type { StorefrontProduct } from "../types/storefront";
 import { useCart } from "../composables/useCart";
 import { useRevealOnScroll } from "../composables/useRevealOnScroll";
@@ -36,6 +38,8 @@ import { useRevealOnScroll } from "../composables/useRevealOnScroll";
 const route = useRoute();
 const router = useRouter();
 const cart = useCart();
+const { content } = useStorefrontContent();
+const { catalogRevision } = useCatalogStore();
 useRevealOnScroll();
 
 const loading = ref(true);
@@ -66,8 +70,8 @@ const pageTitle = computed(() =>
 );
 
 watch(
-  () => route.params.handle,
-  async (handle) => {
+  [() => route.params.handle, catalogRevision],
+  async ([handle]) => {
     loading.value = true;
     const collection = String(handle ?? "all");
     activeCollection.value = collection;

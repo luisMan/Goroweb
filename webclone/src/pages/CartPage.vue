@@ -1,7 +1,7 @@
 <template>
   <section class="section-pad">
     <div class="container">
-      <SectionHeader eyebrow="Cart" title="Review your order" />
+      <SectionHeader :eyebrow="content.cartPage.eyebrow" :title="content.cartPage.title" />
       <p v-if="checkoutNotice" class="checkout-note checkout-note-success">{{ checkoutNotice }}</p>
       <p v-if="checkoutError" class="checkout-note checkout-note-error">{{ checkoutError }}</p>
 
@@ -29,17 +29,17 @@
             <span>Subtotal</span>
             <strong>{{ formatCurrency(subtotalCents, currencyCode) }}</strong>
           </div>
-          <p class="muted">Shipping and payment options are finalized in Mercado Pago.</p>
+          <p class="muted">{{ content.cartPage.shippingNote }}</p>
           <button class="btn btn-primary full" :disabled="isCheckingOut" @click="startCheckout">
-            {{ isCheckingOut ? "Redirecting..." : "Pay with Mercado Pago" }}
+            {{ isCheckingOut ? "Redirecting..." : content.cartPage.checkoutButtonLabel }}
           </button>
-          <RouterLink class="btn btn-ghost full" to="/collections/all">Continue Shopping</RouterLink>
+          <RouterLink class="btn btn-ghost full" to="/collections/all">{{ content.cartPage.continueShoppingLabel }}</RouterLink>
         </aside>
       </div>
 
       <div v-else class="empty-state">
-        <p>Your cart is empty.</p>
-        <RouterLink class="btn btn-primary" to="/collections/all">Browse Products</RouterLink>
+        <p>{{ content.cartPage.emptyStateText }}</p>
+        <RouterLink class="btn btn-primary" to="/collections/all">{{ content.cartPage.browseProductsLabel }}</RouterLink>
       </div>
     </div>
   </section>
@@ -52,8 +52,10 @@ import SectionHeader from "../components/common/SectionHeader.vue";
 import { useCart } from "../composables/useCart";
 import { formatCurrency } from "../services/currency";
 import { createMercadoPagoPreference } from "../services/mercadoPagoCheckout";
+import { useStorefrontContent } from "../services/storefrontContent";
 
 const route = useRoute();
+const { content } = useStorefrontContent();
 const { state, subtotalCents, currencyCode, increment, decrement, removeLine, clear } = useCart();
 const isCheckingOut = ref(false);
 const checkoutError = ref("");

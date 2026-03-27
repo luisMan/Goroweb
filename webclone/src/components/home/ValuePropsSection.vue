@@ -1,7 +1,7 @@
 <template>
   <section class="value-props section-pad">
     <div class="container">
-      <SectionHeader eyebrow="Why BirdFuel" title="Built for consistency" />
+      <SectionHeader :eyebrow="eyebrow" :title="title" />
       <div class="props-grid">
         <article
           class="prop reveal parallax-card"
@@ -27,6 +27,8 @@ interface ValueProp {
 }
 
 defineProps<{
+  eyebrow: string;
+  title: string;
   items: ValueProp[];
 }>();
 </script>
