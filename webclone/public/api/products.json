@@ -1,0 +1,420 @@
+{
+  "products": [
+    {
+      "id": 4516886970455,
+      "title": "Creatina Monohidratada de Alta Pureza - Micronizada 450 g",
+      "handle": "creatina-monohidratada-450g",
+      "description": "<p>Micronized creatine to support high-intensity output and recovery.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Performance Series",
+      "tags": ["creatine", "performance", "training"],
+      "price": 41800,
+      "price_min": 41800,
+      "price_max": 41800,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 46900,
+      "compare_at_price_min": 46900,
+      "compare_at_price_max": 46900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000001,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "CREA-450-01",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Creatina Monohidratada de Alta Pureza - Micronizada 450 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 41800,
+          "weight": 450,
+          "compare_at_price": 46900,
+          "inventory_management": null,
+          "barcode": "750000000001"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/creatina-monohidratada-450g",
+      "media": [
+        {
+          "alt": "Creatina Monohidratada",
+          "id": 1001001,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Performance",
+      "badge": "Best Seller",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970456,
+      "title": "Falcon Protein Vainilla 1.8 kg",
+      "handle": "falcon-protein-vainilla-1-8-kg-60-servicios",
+      "description": "<p>USDA organic plant protein with enzymes for daily performance goals.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Protein Series",
+      "tags": ["protein", "vanilla", "organic"],
+      "price": 84900,
+      "price_min": 84900,
+      "price_max": 84900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 93900,
+      "compare_at_price_min": 93900,
+      "compare_at_price_max": 93900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000002,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "FALC-VAN-18",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Falcon Protein Vainilla 1.8 kg - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 84900,
+          "weight": 1800,
+          "compare_at_price": 93900,
+          "inventory_management": null,
+          "barcode": "750000000002"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1594737625785-cf2f247e3491?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1594737625785-cf2f247e3491?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/falcon-protein-vainilla-1-8-kg-60-servicios",
+      "media": [
+        {
+          "alt": "Falcon Protein",
+          "id": 1001002,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1594737625785-cf2f247e3491?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": true,
+      "selling_plan_groups": [],
+      "collection": "Protein",
+      "badge": "Top Seller",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970457,
+      "title": "Falcon Performance Choco Bronze 1.9 kg",
+      "handle": "falcon-performance-choco-bronze-1-9-kg-50-servicios",
+      "description": "<p>Protein blend with creatine, BCAAs, and adaptogenic support.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Performance Series",
+      "tags": ["protein", "performance", "chocolate"],
+      "price": 87900,
+      "price_min": 87900,
+      "price_max": 87900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 96900,
+      "compare_at_price_min": 96900,
+      "compare_at_price_max": 96900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000003,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "FALC-CHO-19",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Falcon Performance Choco Bronze 1.9 kg - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 87900,
+          "weight": 1900,
+          "compare_at_price": 96900,
+          "inventory_management": null,
+          "barcode": "750000000003"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1556911220-bda9f7f7597e?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1556911220-bda9f7f7597e?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/falcon-performance-choco-bronze-1-9-kg-50-servicios",
+      "media": [
+        {
+          "alt": "Falcon Performance",
+          "id": 1001003,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1556911220-bda9f7f7597e?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": true,
+      "selling_plan_groups": [],
+      "collection": "Performance",
+      "badge": "Athlete Pick",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970458,
+      "title": "Parrot Greens Protein Matcha 900 g",
+      "handle": "parrot-greens-protein-matcha-900-gr",
+      "description": "<p>Greens-based protein with matcha and micronutrient support.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Wellness Series",
+      "tags": ["greens", "wellness", "matcha"],
+      "price": 69900,
+      "price_min": 69900,
+      "price_max": 69900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 76900,
+      "compare_at_price_min": 76900,
+      "compare_at_price_max": 76900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000004,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "PAR-MAT-900",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "Parrot Greens Protein Matcha 900 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 69900,
+          "weight": 900,
+          "compare_at_price": 76900,
+          "inventory_management": null,
+          "barcode": "750000000004"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/parrot-greens-protein-matcha-900-gr",
+      "media": [
+        {
+          "alt": "Parrot Greens",
+          "id": 1001004,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Wellness",
+      "badge": "Daily",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970459,
+      "title": "MCT Oil Powder 432 g",
+      "handle": "mct-oil-powder-432-gr",
+      "description": "<p>MCT powder to support clean energy and focus throughout the day.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Essentials Series",
+      "tags": ["mct", "energy", "essentials"],
+      "price": 43900,
+      "price_min": 43900,
+      "price_max": 43900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 49900,
+      "compare_at_price_min": 49900,
+      "compare_at_price_max": 49900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000005,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "MCT-432-01",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "MCT Oil Powder 432 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 43900,
+          "weight": 432,
+          "compare_at_price": 49900,
+          "inventory_management": null,
+          "barcode": "750000000005"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/mct-oil-powder-432-gr",
+      "media": [
+        {
+          "alt": "MCT Oil Powder",
+          "id": 1001005,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Essentials",
+      "badge": "Keto Friendly",
+      "currency_code": "MXN"
+    },
+    {
+      "id": 4516886970460,
+      "title": "BCAAs + Glutamina 405 g",
+      "handle": "bcaas-glutamina-405-g",
+      "description": "<p>Hydration and amino support designed for pre and post workout routine.</p>",
+      "published_at": "2026-01-10T10:00:00-06:00",
+      "created_at": "2025-12-15T10:00:00-06:00",
+      "vendor": "Birdman",
+      "type": "Performance Series",
+      "tags": ["bcaa", "glutamine", "recovery"],
+      "price": 52900,
+      "price_min": 52900,
+      "price_max": 52900,
+      "available": true,
+      "price_varies": false,
+      "compare_at_price": 57900,
+      "compare_at_price_min": 57900,
+      "compare_at_price_max": 57900,
+      "compare_at_price_varies": false,
+      "variants": [
+        {
+          "id": 499000006,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "BCAA-405-01",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "BCAAs + Glutamina 405 g - Default Title",
+          "public_title": null,
+          "options": ["Default Title"],
+          "price": 52900,
+          "weight": 405,
+          "compare_at_price": 57900,
+          "inventory_management": null,
+          "barcode": "750000000006"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1615485737651-1b7f4f7f6f6c?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
+      ],
+      "featured_image": "https://images.unsplash.com/photo-1615485737651-1b7f4f7f6f6c?auto=format&fit=crop&w=900&q=80",
+      "options": [
+        {
+          "name": "Title",
+          "values": ["Default Title"]
+        }
+      ],
+      "url": "/products/bcaas-glutamina-405-g",
+      "media": [
+        {
+          "alt": "BCAAs and Glutamine",
+          "id": 1001006,
+          "position": 1,
+          "preview_image": {
+            "src": "https://images.unsplash.com/photo-1615485737651-1b7f4f7f6f6c?auto=format&fit=crop&w=900&q=80"
+          }
+        }
+      ],
+      "requires_selling_plan": false,
+      "selling_plan_groups": [],
+      "collection": "Performance",
+      "badge": "Recovery",
+      "currency_code": "MXN"
+    }
+  ]
+}
+
+

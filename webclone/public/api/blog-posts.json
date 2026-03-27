@@ -1,0 +1,50 @@
+{
+  "posts": [
+    {
+      "id": "post-001",
+      "slug": "protein-routine-training-week",
+      "title": "How to build a protein routine around your training week",
+      "category": "Nutrition Science",
+      "excerpt": "A practical cadence for intake, recovery windows, and consistency.",
+      "cover": "https://images.unsplash.com/photo-1511690078903-71dc5a49f5e3?auto=format&fit=crop&w=1200&q=80",
+      "publishedAt": "2026-02-10"
+    },
+    {
+      "id": "post-002",
+      "slug": "creatine-timing-guide",
+      "title": "Creatine timing: practical guidance for consistency",
+      "category": "Performance",
+      "excerpt": "What actually matters for creatine use and what does not.",
+      "cover": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80",
+      "publishedAt": "2026-02-17"
+    },
+    {
+      "id": "post-003",
+      "slug": "high-protein-smoothie-ideas",
+      "title": "3 high-protein smoothies without dairy or gluten",
+      "category": "Recipes",
+      "excerpt": "Simple prep flows for morning, pre-workout, and post-workout shakes.",
+      "cover": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1200&q=80",
+      "publishedAt": "2026-02-21"
+    },
+    {
+      "id": "post-004",
+      "slug": "greener-supplement-stack",
+      "title": "How to layer greens and protein in one daily stack",
+      "category": "Wellness",
+      "excerpt": "A low-friction approach to micronutrients and satiety.",
+      "cover": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+      "publishedAt": "2026-02-25"
+    },
+    {
+      "id": "post-005",
+      "slug": "subscription-savings-guide",
+      "title": "Subscription strategy: lower cost and prevent stockouts",
+      "category": "Ecommerce",
+      "excerpt": "How to set delivery intervals that match your actual usage.",
+      "cover": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&q=80",
+      "publishedAt": "2026-02-27"
+    }
+  ]
+}
+
